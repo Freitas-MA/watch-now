@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Box } from '@mui/system'
-import './App.css'
-import { Navbar } from './components/navbar/Navbar'
+import { Feed, Navbar, VideoDetail, ChannelDetail, SearchFeed } from './components/index'
 
 const App = () => (
   <BrowserRouter>
-    <Box sx={{backgroundCollor: '#000'}}>
+    <Box sx={{backgroundColor: '#000'}}>
       <Navbar />    
       <Routes>
         <Route path="/" element={<Feed />} />
