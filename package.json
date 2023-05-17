@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
-    "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
     "ngrok": "^5.0.0-beta.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -37,6 +37,6 @@
     "react-player": "^2.10.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "vite": "^4.3.2"
+    "vite": "^4.3.7"
   }
 }

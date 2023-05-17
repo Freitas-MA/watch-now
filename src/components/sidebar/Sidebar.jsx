@@ -4,17 +4,18 @@ import { categories } from '../utils/constants'
 
 const selectedCategory = 'New';
 
-const Sidebar = () => (
+const Sidebar = ( {selectedCategory, setSelectedCategory} ) => (
   <Stack 
     direction='row'
     sx={{
-      overFlow: 'hidden',
+      overflow: 'auto',
       height: { sx: 'auto', md: '95%' },
       flexDirection: { md: 'column' },
     }}
     >
       {categories.map((category) => (
         <button className='category-btn'
+        onClick={() => setSelectedCategory(category.name)}
         style={{
           backgroundColor: category.name === selectedCategory && '#FC1503',
           color: 'white',
