@@ -17,3 +17,6 @@ export const fetchFromAPI = async (url) => {
 
   return data;
 };
+
+// TODO - Fix the API error caught ReferenceError: process is not defined
+//     at fetchFromAPI.js?t=1684334314364:10:23
