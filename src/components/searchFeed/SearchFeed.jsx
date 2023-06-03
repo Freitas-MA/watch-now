@@ -22,7 +22,7 @@ const SearchFeed = () => {
       </Typography>
       <Box display="flex">
         <Box sx={{ mr: { sm: '100px' } }}/>
-        {<Videos videos={videos} />}
+        {videos ? <Videos videos={videos} /> : <Typography>No videos found</Typography>}
       </Box>
     </Box>
   );
