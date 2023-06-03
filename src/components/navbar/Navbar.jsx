@@ -16,9 +16,11 @@ const Navbar = () => {
         position: 'fixed',
         top: 0,
         width: '100%',
+        height: '50px',
         zIndex: 1,
         maxWidth: '100vw',
         padding: '5px -5px',
+        borderBottom: '1px solid #303030',
       }}
     >
       <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>

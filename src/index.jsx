@@ -5,4 +5,8 @@ import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+
+document.body.style.marginTop = '50px';
+
 root.render(<App />);
+
