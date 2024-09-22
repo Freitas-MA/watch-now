@@ -9,6 +9,7 @@ import {
 	SearchFeed,
 } from "./components/index";
 import "./index.css";
+import AppFooter from "./components/footer/footer";
 
 const App = () => {
 	const [theme, setTheme] = useState("light");
@@ -40,6 +41,8 @@ const App = () => {
 					<Route path="/channel/:id" element={<ChannelDetail />} />
 					<Route path="/search/:searchTerm" element={<SearchFeed />} />
 				</Routes>
+				<AppFooter />
+
 		</BrowserRouter>
 	);
 };

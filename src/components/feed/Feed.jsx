@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar, Videos } from "../index";
 import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
+import AppFooter from "../footer/footer";
 
 const Feed = () => {
 	const [selectedCategory, setSelectedCategory] = useState("New");
@@ -24,14 +25,10 @@ const Feed = () => {
 					selectedCategory={selectedCategory}
 					setSelectedCategory={setSelectedCategory}
 				/>
-				<p className="textColor ">Copyright © 2023 MF</p>
 			</div>
 
 			{/* Videos Section */}
 			<div className="flex-1 p-4 overflow-y-auto h-[90vh]">
-				<h1 className="TextColor text-2xl font-bold mb-4">
-					{selectedCategory} <span className="textColor">Videos</span>
-				</h1>
 
 				{/* Componente Videos que renderiza a lista de vídeos */}
 				<Videos videos={videos} />
