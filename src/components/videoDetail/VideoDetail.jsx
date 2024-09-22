@@ -1,62 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Box, Stack } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
-import { Videos} from "../index";
-import { fetchFromAPI } from "../utils/fetchFromAPI";
+import { Videos } from "../index";
+import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
+import { CheckCircleIcon } from "@heroicons/react/solid";
 
 const VideoDetail = () => {
-  const [videoDetail, setVideoDetail] = useState(null);
-  const [videos, setVideos] = useState(null);
-  const { id } = useParams();
+	const [videoDetail, setVideoDetail] = useState(null);
+	const [videos, setVideos] = useState(null);
+	const { id } = useParams();
+	const { fetchVideoDetails, fetchRelatedVideos } = useYouTubeStore();
 
-  useEffect(() => {
-    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
-      .then((data) => setVideoDetail(data.items[0]))
+	useEffect(() => {
+		const loadVideoData = async () => {
+			const videoData = await fetchVideoDetails(id);
+			setVideoDetail(videoData);
 
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-      .then((data) => setVideos(data.items))
-  }, [id]);
+			const relatedVideos = await fetchRelatedVideos(id);
+			setVideos(relatedVideos);
+		};
 
-  if(!videoDetail?.snippet) return '<Loader />';
+		loadVideoData();
+	}, [id, fetchVideoDetails, fetchRelatedVideos]);
 
-  const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail;
+	if (!videoDetail?.snippet) return "<Loader />";
 
-  return (
-    <Box minHeight="95vh">
-      <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
-          <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
-            <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
-              {title}
-            </Typography>
-            <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
-              <Link to={`/channel/${channelId}`}>
-                <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" >
-                  {channelTitle}
-                  <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
-                </Typography>
-              </Link>
-              <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} likes
-                </Typography>
-              </Stack>
-            </Stack>
-          </Box>
-        </Box>
-        <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
-          <Videos videos={videos} direction="column" />
-        </Box>
-      </Stack>
-    </Box>
-  );
+	const {
+		snippet: { title, channelId, channelTitle },
+		statistics: { viewCount, likeCount },
+	} = videoDetail;
+
+	return (
+		<div className="min-h-[96vh] flex flex-col items-center no-scrollbar">
+			<div className="flex flex-col md:flex-row items-start justify-between gap-10 w-full overflow-auto no-scrollbar">
+				<div className="flex flex-col w-full md:w-[82%] h-[92vh] justify-center items-center sticky">
+					<div id="video" className="w-full sticky top-20">
+						<ReactPlayer
+							url={`https://www.youtube.com/watch?v=${id}`}
+							className="react-player"
+							controls
+							width="full"
+							height="60vh"
+						/>
+						<h1 className=" text-xl font-bold p-4">{title}</h1>
+						<div className="flex justify-between  py-2 px-4">
+							<Link to={`/channel/${channelId}`} className="flex items-center">
+								<h2 className="text-lg font-medium">{channelTitle}</h2>
+								<CheckCircleIcon className="w-4 h-4  ml-1" />
+							</Link>
+							<div className="flex gap-4 items-center">
+								<p className="text-sm opacity-70">
+									{Number.parseInt(viewCount).toLocaleString()} views
+								</p>
+								<p className="text-sm opacity-70">
+									{Number.parseInt(likeCount).toLocaleString()} likes
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					id="relations"
+					className="px-4 py-6 md:py-2 w-full md:w-[18%] flex justify-center items-center overflow-auto no-scrollbar"
+				>
+					<Videos videos={videos} direction="column" />
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default VideoDetail;

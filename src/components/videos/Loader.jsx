@@ -1,12 +1,9 @@
 import React from 'react';
-import { Box, CircularProgress, Stack } from '@mui/material';
 
-const Loader = () =>  (
-  <Box minHeight="95vh">
-    <Stack direction='row' justifyContent='center' alignItems='center' height='80vh' >
-      <CircularProgress />
-    </Stack>
-  </Box>
+const Loader = () => (
+  <div className="min-h-screen flex justify-center items-center">
+    <div className="w-16 h-16 border-4 border-t-4 border-gray-300 border-t-red-500 rounded-full animate-spin"/>
+  </div>
 );
 
 export default Loader;

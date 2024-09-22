@@ -1,23 +1,23 @@
-import React from 'react'
-import { Stack, Box } from '@mui/material'
-import VideoCard from './VideoCard'
-import ChannelCard from '../channel/channelCard'
-import Loader from './Loader'
+import React from "react";
+import VideoCard from "./VideoCard";
+import ChannelCard from "../channel/channelCard";
+import Loader from "./Loader";
 
 const Videos = ({ videos, direction }) => {
-  if(!videos?.length) return <Loader />;
+	if (!videos?.length) return <Loader />;
 
-return (
-    <Stack direction={direction || 'row'} flexWrap="wrap" justifyContent="start" gap={2}>
-      {videos && videos.map((item, idx) => (
-        console.log(item.id?.videoId, item.id?.channelId),
-        <Box key={idx}>
-            {item.id && item.id.videoId && <VideoCard video={item} />}
-            {item.id && item.id.channelId && <ChannelCard channelDetail={item} />}
-        </Box>
-      ))}
-    </Stack>
-  );
-}
+	return (
+		<div
+			className={"flex flex-row flex-wrap justify-center items-center gap-4"}
+		>
+			{videos?.map((item) => (
+				<div key={item.id.videoId} className="custom-bg-secondary p-1 rounded-lg">
+					{item.id?.videoId && <VideoCard video={item} />}
+					{item.id?.channelId && <ChannelCard channelDetail={item} />}
+				</div>
+			))}
+		</div>
+	);
+};
 
 export default Videos;

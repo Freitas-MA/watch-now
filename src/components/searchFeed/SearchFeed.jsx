@@ -1,31 +1,37 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { Box, Typography } from '@mui/material'
-import { Videos } from '../index'
-import { useParams } from 'react-router-dom'
-
-import { fetchFromAPI } from '../utils/fetchFromAPI'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Videos } from "../index";
+import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
 
 const SearchFeed = () => {
-  const [videos, setVideos] = useState(null);
-  const { searchTerm } = useParams();
+	const [videos, setVideos] = useState(null);
+	const { searchTerm } = useParams();
+	const fetchVideos = useYouTubeStore((state) => state.fetchVideos);
 
-  useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${searchTerm}`)
-      .then((data) => setVideos(data.items))
-  }, [searchTerm]);
+	useEffect(() => {
+		const loadVideos = async () => {
+			const fetchedVideos = await fetchVideos(searchTerm);
+			setVideos(fetchedVideos);
+		};
 
-  return (
-    <Box p={2} minHeight="95vh">
-      <Typography variant="h4" fontWeight={900}  color="white" mb={3} ml={{ sm: "100px"}}>
-        Search Results for <span style={{ color: "#FC1503" }}>{searchTerm}</span> videos
-      </Typography>
-      <Box display="flex">
-        <Box sx={{ mr: { sm: '100px' } }}/>
-        {videos ? <Videos videos={videos} /> : <Typography>No videos found</Typography>}
-      </Box>
-    </Box>
-  );
+		loadVideos();
+	}, [searchTerm, fetchVideos]);
+
+	return (
+		<div className="p-4 min-h-[95vh]">
+			<h1 className="text-2xl font-bold  mb-4 ml-4 sm:ml-24">
+				Search Results for <span className="">{searchTerm}</span> videos
+			</h1>
+			<div className="flex">
+				<div className="mr-0 sm:mr-24" />
+				{videos ? (
+					<Videos videos={videos} />
+				) : (
+					<p className="">No videos found</p>
+				)}
+			</div>
+		</div>
+	);
 };
 
 export default SearchFeed;

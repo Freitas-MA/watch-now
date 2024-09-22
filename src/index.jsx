@@ -1,19 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
+import Navbar from "./components/navbar/Navbar";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-document.body.style.marginTop = '50px';
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<App />);
 
-// Add the following CSS rule to the root element
-document.getElementById('root').style.width = '100vw';
-document.getElementById('root').style.overflowX = 'hidden';
-
-// Add the following CSS rule to the App component
-document.body.style.overflow = 'hidden';
-
-
+ReactDOM.render(
+	<React.StrictMode>
+		<main>
+        <App />
+    </main>
+	</React.StrictMode>,
+	document.getElementById("root"),
+);

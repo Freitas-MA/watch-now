@@ -1,35 +1,34 @@
-import React from 'react'
-import { Stack } from '@mui/material'
-import { categories } from '../utils/constants'
+import React from "react";
+import { categories } from "../../actions/constants";
 
-const selectedCategory = 'New';
+const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
+	<div className="flex md:flex-col overflow-auto h-auto md:h-full sticky">
+		{categories.map((category) => (
+			<button
+				key={category.name}
+				type="button"
+				className={`flex items-center p-2 mb-2 rounded-lg transition-all duration-300 ${
+					category.name === selectedCategory ? "bg-red-600 " : "bg-transparent "
+				}`}
+				onClick={() => setSelectedCategory(category.name)}
+			>
+				<span
+					className={`mr-3 transition-all duration-300 ${
+						category.name === selectedCategory ? "" : ""
+					}`}
+				>
+					{category.icon}
+				</span>
+				<span
+					className={`transition-opacity duration-300 ${
+						category.name === selectedCategory ? "opacity-100" : "opacity-50"
+					}`}
+				>
+					{category.name}
+				</span>
+			</button>
+		))}
+	</div>
+);
 
-const Sidebar = ( {selectedCategory, setSelectedCategory} ) => (
-  <Stack 
-    direction='row'
-    sx={{
-      overflow: 'auto',
-      height: { sx: 'auto', md: '95%' },
-      flexDirection: { md: 'column' },
-    }}
-    >
-      {categories.map((category) => (
-        <button className='category-btn'
-        onClick={() => setSelectedCategory(category.name)}
-        style={{
-          backgroundColor: category.name === selectedCategory && '#FC1503',
-          color: 'white',
-        }}
-        key={category.name}
-        >
-          <span style={{
-            color: category.name === selectedCategory ? 'white' : 'red', marginRight: '15px',
-          }} >{category.icon}</span>
-          <span style={{ opacity: category.name === selectedCategory ? '1' : '0.5'}} >{category.name}</span>
-        </button>
-      ))}
- 
-  </Stack>
-)
-
-export default Sidebar
+export default Sidebar;

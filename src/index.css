@@ -1,89 +1,98 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Cores baseadas na paleta do logotipo */
+  --foreground-rgb: 40, 44, 52; /* Cinza escuro para texto */
+  --background-translucent-rgb: 233, 244, 245; /* Azul claro translúcido */
+  --background-primary-start-rgb: 225, 239, 240; /* Azul claro pastel */
+  --background-primary-end-rgb: 210, 230, 231; /* Azul pastel mais escuro */
+  --background-secondary-rgb: 255, 255, 255; /* Branco puro */
+  --background-button-rgb: 99, 163, 159; /* Turquesa suave (para botões) */
+  --accent-rgb: 120, 182, 179; /* Turquesa escuro (detalhes) */
+}
+
+[data-theme="dark"] {
+  --foreground-rgb: 225, 235, 240; /* Cinza claro para texto */
+  --background-translucent-rgb: 38, 50, 56; /* Azul acinzentado escuro translúcido */
+  --background-primary-start-rgb: 25, 35, 39; /* Azul escuro para fundo */
+  --background-primary-end-rgb: 20, 30, 34; /* Azul muito escuro */
+  --background-secondary-rgb: 32, 40, 45; /* Fundo escuro para blocos */
+  --background-button-rgb: 120, 182, 179; /* Turquesa suave para botões */
+  --accent-rgb: 99, 163, 159; /* Turquesa médio (detalhes) */
+}
+
+/* Classes rápidas para uso */
+.custom-bg-primary {
+  background-color: rgb(var(--background-primary-start-rgb));
+}
+
+.custom-bg-secondary {
+  background-color: rgb(var(--background-secondary-rgb));
+}
+
+.custom-bg-button {
+  background-color: rgb(var(--background-button-rgb));
+}
+
+.custom-text-foreground {
+  color: rgb(var(--foreground-rgb));
+}
+
+.custom-accent {
+  color: rgb(var(--accent-rgb));
+}
+
+.custom-shadow {
+  box-shadow: 0 15px 15px -5px rgba(var(--accent-rgb), 0.2),
+              0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
+}
+
+[data-theme="dark"] .custom-shadow {
+  box-shadow: 0 15px 15px -5px rgba(var(--accent-rgb), 0.2),
+              0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-primary-end-rgb))
+    )
+    rgb(var(--background-primary-start-rgb));
+  background-repeat: no-repeat;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+*::-webkit-scrollbar {
+  display: none; /* Oculta a scrollbar no Chrome, Safari e Opera */
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-  height: 5px;
+* {
+  scrollbar-width: none; /* Oculta a scrollbar no Firefox */
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
-  border-radius: 10px;
-  height: 200px;
+.video-card {
+  @apply w-full sm:w-[358px] md:w-[320px] bg-transparent rounded-lg overflow-hidden;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
+.video-card-image {
+  @apply w-full sm:w-[358px] h-[200px] object-cover;
 }
 
-.category-btn:hover {
-  background-color: #FC1503 !important;
-  color: white !important;
+.video-card-info {
+  @apply p-3 h-[106px] rounded-lg;
 }
 
-.category-btn:hover span{
-  color: white !important;
+.video-card-title {
+  @apply font-bold text-sm mb-1;
 }
 
-.react-player {
-  height: 77vh !important;
-  width: 100% !important;
+.video-card-channel {
+  @apply text-xs flex items-center;
 }
 
-.search-bar{
-  border:none;
-  outline:none;
-  width:350px;
-}
-
-.category-btn{
-  font-weight: bold !important;
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  cursor:pointer;
-  background: transparent;
-  outline: none;
-  border: none;
-
-  padding: 7px 15px;
-  margin: 10px 0px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 900px) {
-  .category-btn{
-    margin: 10px;
-  }
-}
-
-@media screen and (max-width:800px){
-  .copyright{
-    display:none !important;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .scroll-horizontal {
-    overflow: auto !important;
-  }
-
-  .react-player {
-    height: 45vh !important;
-  }
-  .search-bar{
-    width:200px;
-  }
+.video-card-channel-icon {
+  @apply w-3 h-3 ml-1;
 }

@@ -1,53 +1,38 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Box } from '@mui/material'
-
 import { Videos, ChannelCard } from '../index'
-import { fetchFromAPI } from '../utils/fetchFromAPI'
+import useYouTubeStore from "../../zustand/store" // Ajuste o caminho conforme necessário
 
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState(null)
   const [videos, setVideos] = useState([])
-
   const { id } = useParams()
+  const { fetchChannelDetails, fetchChannelVideos } = useYouTubeStore()
   
-  console.log(videos, channelDetail)
-
   useEffect(() => {
-    fetchFromAPI(`channels?part=snippet&id=${id}`)
-    .then((data) => setChannelDetail(data?.items[0]) )
+    const loadChannelData = async () => {
+      const channelData = await fetchChannelDetails(id)
+      setChannelDetail(channelData)
 
-    fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`)
-    .then((data) => setVideos(data?.items) )
-  }, [id])
+      const channelVideos = await fetchChannelVideos(id)
+      setVideos(channelVideos)
+    }
+
+    loadChannelData()
+  }, [id, fetchChannelDetails, fetchChannelVideos])
 
   return (
-    <Box
-    minHeight='95vh'
-    >
-      <Box>
-        <div
-          style={{
-            background: 'radial-gradient(circle, rgba(242,82,88,1) 0%, rgba(103,164,236,1) 100%)',
-            zIndex: 10,
-            height: '300px'
-          }}
-        />
-        <ChannelCard 
+    <div className="min-h-screen">
+      <div className="bg-gradient-to-b from-red-500 to-blue-500 h-72 z-10"/>
+      <ChannelCard 
         channelDetail={channelDetail}
-        marginTop='-6rem'
-        />
-      </Box>
-      <Box display='flex' p='2'>
-        <Box sx={{ 
-          mr: {
-            sm: '100px'
-          }}}/>
-          <Videos videos={videos}/>
-        
-      </Box>
-    </Box>
+        className="mt-[-6rem]"
+      />
+      <div className="flex p-2">
+        <div className="mr-24 sm:mr-48"/>
+        <Videos videos={videos}/>
+      </div>
+    </div>
   )
 }
 
