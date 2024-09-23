@@ -48,7 +48,7 @@ const Navbar = () => {
 
 	return (
 		<nav className="absolute flex top-0 left-0 md:px-10 justify-between items-center w-full max-w-[100vw] h-14 z-10 custom-bg-primary p-2 shadow-lg">
-			<Link to="/" className="flex items-center pl-10 w-[20%]">
+			<Link to="/" className="flex items-center md:pl-6">
 				<img src={logo} alt="logo" height={75} width={75} />
 			</Link>
 			<div className="flex flex-row w-[80%] justify-end items-center">
