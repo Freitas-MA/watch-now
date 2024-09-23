@@ -11,6 +11,22 @@ import {
 import "./index.css";
 import AppFooter from "./components/footer/footer";
 
+/**
+ * The main application component that handles theme management and routing.
+ *
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ *
+ * @returns {JSX.Element} The rendered application component.
+ *
+ * @description
+ * This component initializes the theme based on user preference or system settings,
+ * and provides a toggle function to switch between light and dark themes. It also
+ * sets up the main routes for the application using React Router.
+ */
 const App = () => {
 	const [theme, setTheme] = useState("light");
 

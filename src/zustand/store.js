@@ -1,6 +1,21 @@
 import { create } from 'zustand'
 import { fetchFromAPI } from '../actions/fetchFromAPI'
 
+/**
+ * Zustand store for managing YouTube data.
+ * 
+ * @typedef {Object} YouTubeStore
+ * @property {Object} videos - Cached videos data.
+ * @property {Object} channelDetails - Cached channel details data.
+ * @property {Object} videoDetails - Cached video details data.
+ * @property {Function} fetchVideos - Fetches videos based on a query or category.
+ * @property {Function} fetchVideoDetails - Fetches details of a specific video by ID.
+ * @property {Function} fetchRelatedVideos - Fetches related videos for a specific video by ID.
+ * @property {Function} fetchChannelDetails - Fetches details of a specific channel by ID.
+ * @property {Function} fetchChannelVideos - Fetches videos of a specific channel by ID.
+ * 
+ * @returns {YouTubeStore} The Zustand store for YouTube data.
+ */
 const useYouTubeStore = create((set, get) => ({
   videos: {},
   channelDetails: {},

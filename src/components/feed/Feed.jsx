@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar, Videos } from "../index";
 import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
-import AppFooter from "../footer/footer";
 
+/**
+ * Feed component that displays a list of videos based on the selected category.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Feed />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered Feed component.
+ * 
+ * @description
+ * This component fetches and displays videos from YouTube based on the selected category.
+ * It uses the `useYouTubeStore` hook to fetch videos and manages the selected category and videos state.
+ * 
+ * @function
+ * @name Feed
+ * 
+ * @property {string} selectedCategory - The currently selected category for fetching videos.
+ * @property {function} setSelectedCategory - Function to update the selected category.
+ * @property {Array} videos - Array of videos fetched from YouTube.
+ * @property {function} fetchVideos - Function to fetch videos from YouTube.
+ * 
+ * @hook
+ * @name useEffect
+ * @description Fetches videos whenever the selected category changes.
+ * 
+ * @returns {JSX.Element} The rendered Feed component.
+ */
 const Feed = () => {
 	const [selectedCategory, setSelectedCategory] = useState("New");
 	const [videos, setVideos] = useState([]);

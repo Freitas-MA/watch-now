@@ -10,6 +10,21 @@ import {
 } from "../../actions/constants";
 import "../../index.css";
 
+/**
+ * VideoCard component renders a video card with a thumbnail, title, and channel information.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.video - The video object containing video details.
+ * @param {Object} props.video.id - The video ID object.
+ * @param {string} props.video.id.videoId - The unique identifier for the video.
+ * @param {Object} props.video.snippet - The snippet object containing video metadata.
+ * @param {string} props.video.snippet.thumbnails.high.url - The URL of the high-resolution thumbnail.
+ * @param {string} props.video.snippet.title - The title of the video.
+ * @param {string} props.video.snippet.channelId - The unique identifier for the channel.
+ * @param {string} props.video.snippet.channelTitle - The title of the channel.
+ * @returns {JSX.Element} The rendered video card component.
+ */
 const VideoCard = ({
 	video: {
 		id: { videoId },

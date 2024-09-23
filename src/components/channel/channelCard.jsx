@@ -2,6 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { demoProfilePicture } from "../../actions/constants";
 
+/**
+ * ChannelCard component displays a card with channel details.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.channelDetail - The details of the channel.
+ * @param {Object} props.channelDetail.snippet - The snippet information of the channel.
+ * @param {string} props.channelDetail.snippet.title - The title of the channel.
+ * @param {Object} props.channelDetail.snippet.thumbnails - The thumbnails of the channel.
+ * @param {Object} props.channelDetail.snippet.thumbnails.medium - The medium thumbnail of the channel.
+ * @param {string} props.channelDetail.snippet.thumbnails.medium.url - The URL of the medium thumbnail.
+ * @param {Object} props.channelDetail.statistics - The statistics of the channel.
+ * @param {string} props.channelDetail.statistics.subscriberCount - The subscriber count of the channel.
+ * @param {string} props.channelDetail.id.channelId - The ID of the channel.
+ * @param {string} props.marginTop - The top margin for the card.
+ * @returns {JSX.Element} The rendered ChannelCard component.
+ */
 const ChannelCard = ({ channelDetail, marginTop }) => {
 	return (
 		<div

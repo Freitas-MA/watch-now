@@ -3,6 +3,50 @@ import { Link } from "react-router-dom";
 import { logo } from "../../actions/constants";
 import SearchBar from "../searchBar/SearchBar";
 
+/**
+ * Navbar component that handles theme toggling between dark and light modes.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Navbar />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered Navbar component.
+ * 
+ * @description
+ * The Navbar component initializes the theme based on the user's system preference or a saved cookie value.
+ * It provides a toggle switch to switch between dark and light themes, and updates the document's data-theme attribute and a cookie accordingly.
+ * 
+ * @function
+ * @name Navbar
+ * 
+ * @hook
+ * @name useEffect
+ * @description Initializes the theme on component mount.
+ * 
+ * @state {boolean} darkTheme - State to manage the current theme.
+ * 
+ * @method
+ * @name toggleTheme
+ * @description Toggles the theme between dark and light modes.
+ * 
+ * @method
+ * @name handleDataTheme
+ * @description Sets the data-theme attribute on the document body.
+ * 
+ * @method
+ * @name handleSystemTheme
+ * @description Checks the system's preferred color scheme.
+ * 
+ * @method
+ * @name handleCookieTheme
+ * @description Sets a cookie with the current theme.
+ * 
+ * @method
+ * @name getThemeFromCookie
+ * @description Retrieves the theme from a cookie if it exists.
+ */
 const Navbar = () => {
 	const [darkTheme, setDarkTheme] = useState(false);
 

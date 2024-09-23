@@ -2,6 +2,26 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchIcon } from "@heroicons/react/solid";
 
+/**
+ * SearchBar component allows users to input a search term and navigate to a search results page.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <SearchBar />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered SearchBar component.
+ * 
+ * @description
+ * - Uses `useState` to manage the search term and placeholder text.
+ * - Uses `useNavigate` from `react-router-dom` to navigate to the search results page.
+ * - Uses `useRef` to reference the input element.
+ * - Uses `useEffect` to handle window resize events and adjust the placeholder text accordingly.
+ * 
+ * @function
+ * @name SearchBar
+ */
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [placeholder, setPlaceholder] = useState("Search...");

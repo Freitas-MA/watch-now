@@ -3,6 +3,23 @@ import { useParams } from "react-router-dom";
 import { Videos } from "../index";
 import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
 
+/**
+ * SearchFeed component fetches and displays videos based on the search term from the URL parameters.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <SearchFeed />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered component displaying search results.
+ * 
+ * @description
+ * This component uses the `useParams` hook to get the search term from the URL and the `useYouTubeStore` hook to fetch videos based on that search term. It displays the fetched videos or a message indicating no videos were found.
+ * 
+ * @function
+ * @name SearchFeed
+ */
 const SearchFeed = () => {
 	const [videos, setVideos] = useState(null);
 	const { searchTerm } = useParams();

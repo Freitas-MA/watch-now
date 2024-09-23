@@ -1,3 +1,44 @@
+/**
+ * @fileoverview This file contains constants used in the YouTube clone app.
+ * It includes imports for various Material-UI icons, and exports several constants
+ * such as the logo path, categories array, and demo data for thumbnails, channels, and videos.
+ * 
+ * @module constants
+ */
+
+ /**
+	* @constant {string} logo - Path to the logo image.
+	*/
+
+ /**
+	* @constant {Array<Object>} categories - Array of category objects, each containing a name and an icon.
+	* @property {string} name - The name of the category.
+	* @property {JSX.Element} icon - The icon representing the category.
+	*/
+
+ /**
+	* @constant {string} demoThumbnailUrl - URL of the demo thumbnail image.
+	*/
+
+ /**
+	* @constant {string} demoChannelUrl - URL of the demo channel.
+	*/
+
+ /**
+	* @constant {string} demoVideoUrl - URL of the demo video.
+	*/
+
+ /**
+	* @constant {string} demoChannelTitle - Title of the demo channel.
+	*/
+
+ /**
+	* @constant {string} demoVideoTitle - Title of the demo video.
+	*/
+
+ /**
+	* @constant {string} demoProfilePicture - URL of the demo profile picture.
+	*/
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";

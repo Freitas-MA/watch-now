@@ -5,6 +5,29 @@ import { Videos } from "../index";
 import useYouTubeStore from "../../zustand/store"; // Ajuste o caminho conforme necessário
 import { CheckCircleIcon } from "@heroicons/react/solid";
 
+/**
+ * VideoDetail component fetches and displays the details of a YouTube video along with related videos.
+ *
+ * @component
+ * @example
+ * return (
+ *   <VideoDetail />
+ * )
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @description
+ * This component uses the `useParams` hook to get the video ID from the URL, and the `useYouTubeStore` hook to fetch video details and related videos. It displays the video using `ReactPlayer` and shows the video title, channel information, view count, and like count. Related videos are displayed in a scrollable section.
+ *
+ * @requires useState
+ * @requires useEffect
+ * @requires useParams
+ * @requires useYouTubeStore
+ * @requires ReactPlayer
+ * @requires Link
+ * @requires CheckCircleIcon
+ * @requires Videos
+ */
 const VideoDetail = () => {
 	const [videoDetail, setVideoDetail] = useState(null);
 	const [videos, setVideos] = useState(null);
