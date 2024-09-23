@@ -54,42 +54,46 @@ const VideoDetail = () => {
 	} = videoDetail;
 
 	return (
-		<div className="max-h-screen flex flex-col items-center overflow-hidden">
-			<div className="flex flex-col md:flex-row items-start justify-between gap-4 md:gap-10 px-2 md:px-4 w-full">
-				<div className="flex flex-col w-full md:w-[82%] h-[92vh] justify-center items-center">
+		<div className="min-h-screen md:max-h-screen flex flex-col items-center md:overflow-hidden">
+			<div className="flex flex-col md:flex-row items-start justify-between gap-2 md:gap-10 pt-20 px-2 md:px-4 h-full w-full">
+				<div className="flex flex-col w-full h-full md:w-[82%] md:h-[92vh] justify-start items-center">
 					<div
 						id="video"
-						className="w-full flex flex-col justify-center items-center"
+						className="w-full md:w-[80%] flex flex-col justify-center items-center"
 					>
-						<div className="flex relative aspect-video w-full max-w-full p-6">
+						<div className="flex relative aspect-video w-full max-w-full rounded-sm overflow-hidden">
 							<ReactPlayer
 								url={`https://www.youtube.com/watch?v=${id}`}
-								style={{ borderRadius: "1rem", absolute: "top-0", left: "0" }}
+								style={{
+									borderRadius: "5rem",
+									absolute: "top-0",
+									left: "0",
+								}}
 								width="100%"
 								height="100%"
 								controls
 							/>
 						</div>
-						<div className="flex flex-col md:flex-row justify-between w-full px-4 md:px-8">
-							<h1 className="text-lg md:text-xl font-bold p-2 md:p-4">
+						<div className="flex flex-col md:flex-row justify-between w-full px-4 md:px-0">
+							<h1 className="text-sm md:text-lg font-bold p-2 md:py-4">
 								{title}
 							</h1>
 							<div className="flex flex-col md:flex-row justify-between gap-2 md:gap-6 py-2 px-2 md:px-4">
 								<Link
 									to={`/channel/${channelId}`}
-									className="flex items-center"
+									className="flex flex-row items-center"
 								>
-									<h2 className="text-base md:text-lg font-medium">
+									<h2 className="text-base md:text-sm font-medium text-nowrap">
 										{channelTitle}
 									</h2>
 									<CheckCircleIcon className="w-4 h-4 ml-1" />
 								</Link>
 								<div className="flex gap-2 md:gap-4 items-center">
-									<p className="text-sm opacity-70">
-										{Number.parseInt(viewCount).toLocaleString()} views
+									<p className="text-sm opacity-70 text-nowrap">
+										{Number.parseInt(viewCount).toLocaleString()} 👀 
 									</p>
-									<p className="text-sm opacity-70">
-										{Number.parseInt(likeCount).toLocaleString()} likes
+									<p className="text-sm opacity-70 text-nowrap">
+										{Number.parseInt(likeCount).toLocaleString()} 👍
 									</p>
 								</div>
 							</div>
@@ -98,7 +102,7 @@ const VideoDetail = () => {
 				</div>
 				<div
 					id="relations"
-					className="px-2 md:px-4 mt-4 md:mt-28 md:py-2 md:w-[24%] flex justify-center items-center overflow-y-auto h-[calc(100vh-4rem)] pt-4"
+					className="px-2 mb-16 md:px-4 md:mt-0 md:py-2 md:w-[24%] flex justify-center items-center md:overflow-y-auto md:h-[calc(100vh-4rem)] md:pt-4"
 				>
 					<Videos videos={videos} direction="column" />
 				</div>

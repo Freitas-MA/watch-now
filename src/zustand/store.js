@@ -73,4 +73,9 @@ const useYouTubeStore = create((set, get) => ({
   }
 }))
 
+const useOauthStore = create((set) => ({
+  accessToken: null,
+  setAccessToken: (token) => set({ accessToken: token })
+}))
+
 export default useYouTubeStore
