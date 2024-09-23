@@ -29,7 +29,7 @@ const ChannelDetail = () => {
         className="mt-[-6rem]"
       />
       <div className="flex p-2">
-        <div className="mr-24 sm:mr-48"/>
+        <div className="mr-24 "/>
         <Videos videos={videos}/>
       </div>
     </div>

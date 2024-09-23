@@ -2,7 +2,7 @@ import React from "react";
 import { categories } from "../../actions/constants";
 
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
-	<div className="flex md:flex-col overflow-auto h-auto md:h-full sticky">
+	<div className="flex md:flex-col overflow-auto h-auto md:h-full sticky top-0 left-0 pl-4">
 		{categories.map((category) => (
 			<button
 				key={category.name}

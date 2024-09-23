@@ -4,7 +4,7 @@
 
 :root {
   /* Cores baseadas na paleta do logotipo */
-  --foreground-rgb: 40, 44, 52; /* Cinza escuro para texto */
+  --foreground-rgb: 50, 44, 62, 1; /* Cinza escuro para texto */
   --background-translucent-rgb: 233, 244, 245; /* Azul claro translúcido */
   --background-primary-start-rgb: 225, 239, 240; /* Azul claro pastel */
   --background-primary-end-rgb: 210, 230, 231; /* Azul pastel mais escuro */
@@ -46,12 +46,12 @@
 
 .custom-shadow {
   box-shadow: 0 15px 15px -5px rgba(var(--accent-rgb), 0.2),
-              0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
+    0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
 }
 
 [data-theme="dark"] .custom-shadow {
   box-shadow: 0 15px 15px -5px rgba(var(--accent-rgb), 0.2),
-              0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
+    0 10px 10px -5px rgba(var(--accent-rgb), 0.1);
 }
 
 body {
@@ -73,12 +73,18 @@ body {
   scrollbar-width: none; /* Oculta a scrollbar no Firefox */
 }
 
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+}
+
 .video-card {
-  @apply w-full sm:w-[358px] md:w-[320px] bg-transparent rounded-lg overflow-hidden;
+  @apply w-full md:w-[320px] bg-transparent rounded-lg overflow-hidden;
 }
 
 .video-card-image {
-  @apply w-full sm:w-[358px] h-[200px] object-cover;
+  @apply w-full h-[200px] object-cover;
 }
 
 .video-card-info {

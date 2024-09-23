@@ -3,24 +3,28 @@ import "react-social-icons/github";
 import "react-social-icons/linkedin";
 
 export default function AppFooter() {
-  return (
-    <footer className="flex flex-row w-full h-10 items-center justify-start fixed bottom-0 left-0 bg px-4 rounded-md opacity-95 z-10">
-      <p className="text-sm">
-        <span className="font-thin">Designed by: </span>
-        <a href="https://portfolio-sepia-eight-67.vercel.app/" target="__blank">
-          MFreitas
-        </a>
-      </p>
-      <div className="grayscale">
-        <SocialIcon
-          style={{ scale: "0.5" }}
-          url="https://github.com/Freitas-MA"
-        />
-        <SocialIcon
-          style={{ scale: "0.5" }}
-          url="https://www.linkedin.com/in/freitas-marcos/"
-        />
-      </div>
-    </footer>
-  );
+	return (
+		<footer className="flex flex-row w-full h-10 items-center justify-between fixed bottom-0 left-0 bg px-8 rounded-md z-50 custom-bg-primary">
+			<p className="text-sm text-center flex items-center mr-4">
+				<span className="font-thin">Designed by: {""}</span>
+				<a
+					href="https://mfreitas.vercel.app/"
+					target="__blank"
+					className="ml-1"
+				>
+					MFreitas
+				</a>
+			</p>
+			<div className="grayscale flex justify-center items-center">
+				<SocialIcon
+					style={{ scale: "0.4" }}
+					url="https://github.com/Freitas-MA"
+				/>
+				<SocialIcon
+					style={{ scale: "0.4" }}
+					url="https://www.linkedin.com/in/freitas-marcos/"
+				/>
+			</div>
+		</footer>
+	);
 }
